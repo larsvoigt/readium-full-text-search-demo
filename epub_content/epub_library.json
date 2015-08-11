@@ -1,0 +1,15 @@
+[
+    {
+        "title" : "Accessible EPUB 3",
+        "author" : "Matt Garrish",
+        "coverHref" : "epub_content/accessible_epub_3/EPUB/covers/9781449328030_lrg.jpg",
+        "packagePath" : "EPUB/package.opf",
+        "rootUrl" : "epub_content/accessible_epub_3"
+    },
+    {
+        "title" : "A First Course in Linear Algebra",
+        "author" : "Robert A. Beezer",
+        "packagePath" : "EPUB/package.opf",
+        "rootUrl" : "epub_content/linear-algebra"
+    }
+]
