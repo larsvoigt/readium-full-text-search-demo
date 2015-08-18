@@ -43796,7 +43796,7 @@ return ReaderView;
 });
 define('text',{load: function(id){throw new Error("Dynamic load not allowed: " + id);}});
 
-define('text!version.json',[],function () { return '{"readiumJsViewer":{"sha":"0bd8c6de959167b558f42271b668a1c84048406c","clean":false,"version":"0.20.0-alpha","chromeVersion":"2.20.0-alpha","tag":"0.20.0-alpha-28-g0bd8c6d","branch":"feature/new_full_text_search","release":false,"timestamp":1439199458971},"readiumJs":{"sha":"f08b9642b221c37edd268f4bbd974ac8bbbad144","clean":false,"version":"0.20.0-alpha","tag":"0.18-192-gf08b964","branch":"develop","release":false,"timestamp":1439199459184},"readiumSharedJs":{"sha":"a35fec93db834bc0f00d37dccec15132730c5b70","clean":false,"version":"0.20.0-alpha","tag":"0.18-236-ga35fec9","branch":"develop","release":false,"timestamp":1439199459327},"readiumCfiJs":{"sha":"f6384e9b10f726c05a89ca6999968fafef22c727","clean":false,"version":"0.20.0-alpha","tag":"0.1.4-162-gf6384e9","branch":"develop","release":false,"timestamp":1439199459460}}';});
+define('text!version.json',[],function () { return '{"readiumJsViewer":{"sha":"0bd8c6de959167b558f42271b668a1c84048406c","clean":false,"version":"0.20.0-alpha","chromeVersion":"2.20.0-alpha","tag":"0.20.0-alpha-28-g0bd8c6d","branch":"readium_full_text_search_demo","release":false,"timestamp":1439383998583},"readiumJs":{"sha":"af99d0dcf2f469a13c1df33d1ca50ca552af6c60","clean":false,"version":"0.20.0-alpha","tag":"0.18-194-gaf99d0d","branch":"develop","release":false,"timestamp":1439383998698},"readiumSharedJs":{"sha":"a35fec93db834bc0f00d37dccec15132730c5b70","clean":false,"version":"0.20.0-alpha","tag":"0.18-236-ga35fec9","branch":"develop","release":false,"timestamp":1439383998795},"readiumCfiJs":{"sha":"f6384e9b10f726c05a89ca6999968fafef22c727","clean":false,"version":"0.20.0-alpha","tag":"0.1.4-162-gf6384e9","branch":"develop","release":false,"timestamp":1439383998962}}';});
 
 //  Copyright (c) 2014 Readium Foundation and/or its licensees. All rights reserved.
 //  
@@ -50051,7 +50051,7 @@ define('readium_js/epub-fetch/iframe_zip_loader',['URIjs', 'readium_shared_js/vi
 
     var zipIframeLoader = function( getCurrentResourceFetcher, contentDocumentTextPreprocessor) {
 
-        var isIE = (window.navigator.userAgent.indexOf("Trident") > 0);
+        var isIE = (window.navigator.userAgent.indexOf("Trident") > 0 || window.navigator.userAgent.indexOf("Edge") > 0);
             
         var basicIframeLoader = new IFrameLoader();
 
@@ -64016,8 +64016,11 @@ define('readium_js_viewer/FullTextSearch',['./Dialogs',
         var PREVIOUS = "previous";
         var NEXT = "next";
         var direction;
-        var host = window.location.protocol + '//' + window.location.hostname + ':8081';
+        
+        // todo: host should be configurable 
+        //var host = window.location.protocol + '//' + window.location.hostname + ':8081';
         //var host = 'http://localhost:8081';
+        var host = window.location.origin;
         var spinner;
 
         var FullTextSearch = function (readium) {

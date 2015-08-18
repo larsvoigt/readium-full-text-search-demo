@@ -16,6 +16,7 @@
     "epub3-samples": "latest"
   },
   "scripts": {
-    "start": "node ./node_modules/ncp/bin/ncp ./node_modules/epub3-samples/ epub_content && node ./main.js"
+    "start": "npm run copy:samples && node ./server.js",
+    "copy:samples": "node ./node_modules/ncp/bin/ncp ./node_modules/epub3-samples/ epub_content"
   }
 }
